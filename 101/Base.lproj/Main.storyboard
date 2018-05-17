@@ -285,6 +285,38 @@
             </objects>
             <point key="canvasLocation" x="1822" y="1133"/>
         </scene>
+        <!--Show Media View Controller-->
+        <scene sceneID="bX5-x3-yDy">
+            <objects>
+                <viewController id="KMJ-nB-cXT" customClass="ShowMediaViewController" customModule="_01" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SVe-1y-Poy"/>
+                        <viewControllerLayoutGuide type="bottom" id="tVF-aX-0FL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ilz-Eb-Qu1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vuh-eP-haF">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vuh-eP-haF" firstAttribute="top" secondItem="SVe-1y-Poy" secondAttribute="bottom" id="GH2-HA-uCb"/>
+                            <constraint firstItem="tVF-aX-0FL" firstAttribute="top" secondItem="Vuh-eP-haF" secondAttribute="bottom" id="jih-t6-WQN"/>
+                            <constraint firstItem="Vuh-eP-haF" firstAttribute="trailing" secondItem="Ilz-Eb-Qu1" secondAttribute="trailingMargin" id="lrv-vY-mbq"/>
+                            <constraint firstItem="Vuh-eP-haF" firstAttribute="leading" secondItem="Ilz-Eb-Qu1" secondAttribute="leadingMargin" id="tzX-H4-7Ht"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Vuh-eP-haF" id="LVy-Z0-5iN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQ4-eK-fHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="1133"/>
+        </scene>
         <!--Add Channel View Controller-->
         <scene sceneID="xvK-0U-jmd">
             <objects>
@@ -406,6 +438,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KMJ-nB-cXT" kind="show" identifier="showMedia" id="J1k-HT-uW2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-1r-Xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

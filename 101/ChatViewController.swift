@@ -19,6 +19,7 @@ final class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    var selectedImage: UIImage?
     
     
     // Array to store the messages
@@ -95,9 +96,17 @@ final class ChatViewController: JSQMessagesViewController {
     // Set up the properties needed to initialize ChannelInfoViewController just before the segue takes place.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
-        let infoVc = segue.destination as! ChannelInfoViewController
-        infoVc.channel = channel
+        if segue.identifier == "showMedia" {
+            if let pageDeDestination = segue.destination as? ShowMediaViewController {
+                pageDeDestination.image = selectedImage!
+            } else {
+                print("type destination not ok")
+            }
+        } else {
+            let infoVc = segue.destination as! ChannelInfoViewController
+            infoVc.channel = channel
+        }
+       
     }
   
   // MARK: Firebase related methods
@@ -258,6 +267,29 @@ final class ChatViewController: JSQMessagesViewController {
     func setImageURL(_ url: String, forPhotoMessageWithKey key: String) {
         let itemRef = messageRef.child(key)
         itemRef.updateChildValues(["photoURL": url])
+    }
+    
+    // Open the image in a new view controller.
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        if let test = self.getImage(indexPath: indexPath) {
+            selectedImage = test
+            self.performSegue(withIdentifier: "showMedia", sender: self)
+        }
+    }
+    
+    func getImage(indexPath: IndexPath) -> UIImage? {
+        let message = self.messages[indexPath.row]
+        if message.isMediaMessage == true {
+            let mediaItem = message.media
+            if mediaItem is JSQPhotoMediaItem {
+                let photoItem = mediaItem as! JSQPhotoMediaItem
+                if let test: UIImage = photoItem.image {
+                    let image = test
+                    return image
+                }
+            }
+        }
+        return nil
     }
     
     // When the accessory button is pressed, present a camera if the device supports it and the photo library if not.
