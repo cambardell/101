@@ -296,13 +296,16 @@ final class ChatViewController: JSQMessagesViewController {
     override func didPressAccessoryButton(_ sender: UIButton!) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+        let alert = UIAlertController(title: "Camera or Library", message: "Take a photo with the camera or select it from your library.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Camera", comment: "Default action"), style: .default, handler: { _ in
             picker.sourceType = UIImagePickerControllerSourceType.camera
-        } else {
+            self.present(picker, animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Library", comment: "Default action"), style: .default, handler: { _ in
             picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
+            self.present(picker, animated: true, completion: nil)
+        }))
         
-        present(picker, animated: true, completion: nil)
     }
     
     //When chatViewController disappears
