@@ -14,6 +14,7 @@
 		1A5826ED2093756100D55AF2 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5826EC2093756100D55AF2 /* AccountViewController.swift */; };
 		1A761BF3209B886B00981EA0 /* ChannelInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A761BF2209B886B00981EA0 /* ChannelInfoViewController.swift */; };
 		1ADCF8D920AE47500032421D /* ShowMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADCF8D820AE47500032421D /* ShowMediaViewController.swift */; };
+		1ADCF8DB20AF2F3E0032421D /* UITest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ADCF8DA20AF2F3E0032421D /* UITest.storyboard */; };
 		459780D31D6465FB007BE66F /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459780D21D6465FB007BE66F /* UIImage+Gif.swift */; };
 		45A0D8FA1D49419500F26729 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A0D8F91D49419500F26729 /* ChannelListViewController.swift */; };
 		45A0D8FE1D49508800F26729 /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A0D8FD1D49508800F26729 /* CreateChannelCell.swift */; };
@@ -35,6 +36,7 @@
 		1A5826EC2093756100D55AF2 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1A761BF2209B886B00981EA0 /* ChannelInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInfoViewController.swift; sourceTree = "<group>"; };
 		1ADCF8D820AE47500032421D /* ShowMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMediaViewController.swift; sourceTree = "<group>"; };
+		1ADCF8DA20AF2F3E0032421D /* UITest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UITest.storyboard; sourceTree = "<group>"; };
 		405733D537101C857BFB51AC /* Pods_101.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_101.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4570C5E21D54FD11007946D9 /* ChatChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatChat.entitlements; sourceTree = "<group>"; };
 		459780D21D6465FB007BE66F /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				45A0D8FD1D49508800F26729 /* CreateChannelCell.swift */,
 				BB53557D1BEF765800321277 /* Main.storyboard */,
 				BB5355821BEF765800321277 /* LaunchScreen.storyboard */,
+				1ADCF8DA20AF2F3E0032421D /* UITest.storyboard */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				BB5355811BEF765800321277 /* Assets.xcassets in Resources */,
 				1A1BA89920A687E300D6C824 /* GoogleService-Info.plist in Resources */,
 				BB53557F1BEF765800321277 /* Main.storyboard in Resources */,
+				1ADCF8DB20AF2F3E0032421D /* UITest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
