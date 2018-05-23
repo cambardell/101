@@ -42,9 +42,9 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // For the first section, store the text field from the cell in the newChannelTextField. For the second section, set the cell's text label as the channel name.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ExistingChannel"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ChannelListCell
          
-        cell.textLabel?.text = channels[(indexPath as NSIndexPath).row].name
+        cell.classTitle.text = channels[(indexPath as NSIndexPath).row].name
         
         return cell
     }
