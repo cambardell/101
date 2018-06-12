@@ -74,6 +74,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             defaults.synchronize()
         }
     }
+    @IBAction func viewTos(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://101-software.com/terms-of-service")!)
+        
+    }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

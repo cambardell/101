@@ -51,6 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.defaults.set(self.emailField.text!, forKey: "jsq_email")
             self.defaults.set(self.passwordField.text!, forKey: "jsq_password")
             
+           
             self.defaults.synchronize()
             
             self.performSegue(withIdentifier: "LoginToChat", sender: nil)
@@ -62,6 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // When the create account button is tapped, move to the create account screen.
     @IBAction func createAccount(_ sender: Any) {
+        
         self.performSegue(withIdentifier: "createAccount", sender: nil)
     }
     
