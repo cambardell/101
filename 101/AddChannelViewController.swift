@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 import Firebase
+import MessageUI
 
-
-class AddChannelViewController: UITableViewController {
+class AddChannelViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     // TODO: Fix checkmarks when searching vs not searching. 
     private var channels: [Channel] = []
     
@@ -41,6 +41,7 @@ class AddChannelViewController: UITableViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+        tableView.rowHeight = 88
     }
     
     // Get information about signed in user when view will appear.
@@ -77,7 +78,22 @@ class AddChannelViewController: UITableViewController {
         cell.textLabel?.text = ("\(channel.name) - \(channel.school)")
         return cell
     }
-
+    
+    @IBAction func reportMissing(_ sender: Any) {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["talk101app@gmail.com"])
+        composeVC.setSubject("Missing class")
+        composeVC.setMessageBody("Missing a class? Please enter the school and course code.", isHTML: false)
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
     private func observeChannels() {
         // Use the observe method to listen for new channels being written to firebase.
         // observe:with calls the completion block every time a new channel is added to the database.
@@ -169,8 +185,6 @@ class AddChannelViewController: UITableViewController {
         return searchController.isActive && !searchBarIsEmpty()
     }
 }
-
-
 
 extension AddChannelViewController: UISearchResultsUpdating {
     // MARK: UISearchResultsUpdating delegate

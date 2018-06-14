@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
             FirebaseApp.configure()
+            Database.database().isPersistenceEnabled = true
             // Initialize the Google Mobile Ads SDK.
             GADMobileAds.configure(withApplicationID: "ca-app-pub-4804366180565835~3263780833")
          

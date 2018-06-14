@@ -123,6 +123,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "101"
+        tableView.rowHeight = 88
+        
         
     }
     
@@ -133,6 +135,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         }
         channels = []
         observeChannels()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

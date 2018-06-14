@@ -19,6 +19,16 @@ class AccountViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    @IBOutlet weak var signOut: UIButton!
+    @IBOutlet weak var changeName: UIButton!
+    @IBOutlet weak var changePassword: UIButton!
+    
+    override func viewDidLoad() {
+        signOut.layer.cornerRadius = 4
+        changeName.layer.cornerRadius = 4
+        changePassword.layer.cornerRadius = 4
+    }
+    
     
     // When the user taps the sign out button
     @IBAction func signOut(_ sender: AnyObject) {

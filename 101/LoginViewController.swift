@@ -13,13 +13,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
-    
-  let defaults = UserDefaults.standard
+  @IBOutlet weak var errorText: UILabel!
+    let defaults = UserDefaults.standard
   
   // MARK: View Lifecycle
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    errorText.isHidden = true
     NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     
@@ -44,6 +45,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if let err = error {
                 print(err.localizedDescription)
+                self.errorText.text = err.localizedDescription
+                self.errorText.isHidden = false
                 return
             }
             

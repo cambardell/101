@@ -22,9 +22,11 @@ class ChannelInfoViewController: UIViewController, UITableViewDelegate, UITableV
     var displayNamesArray: Array<String> = []
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var leaveClass: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        leaveClass.layer.cornerRadius = 4
     }
     
     
