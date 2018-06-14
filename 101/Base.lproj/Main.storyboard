@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="euS-Ob-Axe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="euS-Ob-Axe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -406,26 +406,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExistingChannel" textLabel="MWt-ud-2Ka" imageView="2Sk-YK-QF5" rowHeight="88" style="IBUITableViewCellStyleDefault" id="wiu-aw-XOR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExistingChannel" rowHeight="88" id="FW7-ts-FGC" customClass="AddChannelListCell" customModule="_01" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wiu-aw-XOR" id="5Uy-j7-tJ5">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FW7-ts-FGC" id="PDc-Fg-2Zw">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MWt-ud-2Ka">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="87.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybe-tl-Km9">
+                                            <rect key="frame" x="16" y="11" width="343" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Sk-YK-QF5">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ra2-dw-7vD">
+                                            <rect key="frame" x="16" y="56" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ra2-dw-7vD" firstAttribute="trailing" secondItem="Ybe-tl-Km9" secondAttribute="trailing" id="3H8-NX-dpI"/>
+                                        <constraint firstItem="Ra2-dw-7vD" firstAttribute="top" secondItem="Ybe-tl-Km9" secondAttribute="bottom" constant="15" id="ERd-Zu-tfX"/>
+                                        <constraint firstItem="Ra2-dw-7vD" firstAttribute="leading" secondItem="Ybe-tl-Km9" secondAttribute="leading" id="PsJ-GO-rhe"/>
+                                        <constraint firstItem="Ra2-dw-7vD" firstAttribute="leading" secondItem="PDc-Fg-2Zw" secondAttribute="leadingMargin" id="aVG-ML-qYm"/>
+                                        <constraint firstItem="Ybe-tl-Km9" firstAttribute="leading" secondItem="PDc-Fg-2Zw" secondAttribute="leadingMargin" id="fc3-00-sij"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ra2-dw-7vD" secondAttribute="trailing" id="kdT-b4-Obo"/>
+                                        <constraint firstItem="Ybe-tl-Km9" firstAttribute="top" secondItem="PDc-Fg-2Zw" secondAttribute="topMargin" id="neZ-fA-y9E"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ybe-tl-Km9" secondAttribute="trailing" id="xIP-9O-l4E"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="classSchool" destination="Ra2-dw-7vD" id="EUr-bZ-qjD"/>
+                                    <outlet property="classTitle" destination="Ybe-tl-Km9" id="Eeg-6N-IkJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -678,7 +693,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NJA-oh-zsa"/>
+        <segue reference="C1q-pb-YWz"/>
         <segue reference="EkD-rs-vor"/>
     </inferredMetricsTieBreakers>
 </document>

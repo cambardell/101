@@ -66,7 +66,7 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     // Set the label text to be the name of the channel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ExistingChannel"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! AddChannelListCell
         let channel: Channel
         
         if isFiltering() {
@@ -75,7 +75,8 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
             channel = channels[indexPath.row]
         }
         
-        cell.textLabel?.text = ("\(channel.name) - \(channel.school)")
+        cell.classTitle.text = channel.name
+        cell.classSchool.text = channel.school
         return cell
     }
     
