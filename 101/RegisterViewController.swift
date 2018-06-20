@@ -10,15 +10,22 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var bottomLayoutGuideConstraint: NSLayoutConstraint!
+    @IBOutlet weak var schoolPicker: UIPickerView!
     
     let defaults = UserDefaults.standard
+    
+    let schools = ["University of Waterloo",
+                   "Queen's University",
+                   "Wilfrid Laurier University"]
     
     // MARK: View Lifecycle
     
@@ -40,6 +47,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.emailField.delegate = self
         self.passwordField.delegate = self
         self.errorLabel.isHidden = true
+        schoolPicker.delegate = self
+        schoolPicker.dataSource = self
     }
     
     // When the sign up button is tapped
@@ -63,6 +72,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 changeRequest!.commitChanges { (error) in
                     print("Error saving display name \(String(describing: error))")
                 }
+                
+                // Set the users school based on the picker view
+                let userSchool = ["school": self.schools[self.schoolPicker.selectedRow(inComponent: 0)]]
+                Database.database().reference().child("users").child(user!.uid).setValue(userSchool)
                 
                 // Save the email and password to device for automatic login
                 self.defaults.set(self.emailField.text, forKey: "jsq_email")
@@ -89,6 +102,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             channelVc.senderDisplayName = nameField?.text
         }
         
+    }
+    
+    // MARK: Picker View
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return schools.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return schools[row]
     }
     
     // MARK: - Notifications

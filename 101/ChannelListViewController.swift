@@ -14,9 +14,12 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // MARK: Properties
     var senderDisplayName: String?
     private var channels: [Channel] = []
+
+    var school: String?
     
     // Store a reference to the list of channels in the database
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    private lazy var usersRef: DatabaseReference = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid)
     // Hold a handle to the reference
     private var channelRefHandle: DatabaseHandle?
     
@@ -133,8 +136,15 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
         }
-        channels = []
-        observeChannels()
+        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let data = snapshot.value as! Dictionary<String, AnyObject>
+            self.school = data["school"] as? String
+            self.channelRef = self.channelRef.child(self.school!)
+            self.channels = []
+            self.observeChannels()
+        })
+        
+        
         
     }
     

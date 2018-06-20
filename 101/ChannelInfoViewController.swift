@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import Firebase
+import MessageUI
 
-class ChannelInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChannelInfoViewController: UIViewController, MFMailComposeViewControllerDelegate {
     // TODO: Report button
     
     var channel: Channel?
@@ -18,32 +19,17 @@ class ChannelInfoViewController: UIViewController, UITableViewDelegate, UITableV
     
     let user = Auth.auth().currentUser?.uid
     
-    var displayNames: Dictionary<String, String>.Values = ["key": "value"].values
-    var displayNamesArray: Array<String> = []
-    
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var leaveClass: UIButton!
+    @IBOutlet weak var reportUser: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         leaveClass.layer.cornerRadius = 4
+        reportUser.layer.cornerRadius = 4
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let channelsData = snapshot.value as! Dictionary<String, AnyObject>
-            let channelData = channelsData["\(String(describing: self.channel!.id))"] as! Dictionary<String, AnyObject>
-            
-            if let memberNames = channelData["names"] as! Dictionary<String, String>? {
-                self.displayNames = memberNames.values
-                for name in self.displayNames {
-                    self.displayNamesArray.append(name)
-                }
-                self.tableView.reloadData()
-                
-            }
-        })
     }
     
     
@@ -66,19 +52,22 @@ class ChannelInfoViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayNamesArray.count
-        
+    // Open an email with instructions for reporting
+    @IBAction func reportUser(_ sender: Any) {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["talk101app@gmail.com"])
+        composeVC.setSubject("User report")
+        composeVC.setMessageBody("Please include the school, course code, and name of the user you are reporting, as well as the behaviour leading to the report.", isHTML: false)
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "DisplayName"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        
-        cell.textLabel?.text = displayNamesArray[(indexPath as NSIndexPath).row]
-        
-        return cell
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
+    
     
 }
 

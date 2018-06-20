@@ -14,8 +14,11 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     // TODO: Fix checkmarks when searching vs not searching. 
     private var channels: [Channel] = []
     
+    var school: String?
+    
     // Store a reference to the list of channels in the database
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    private lazy var usersRef: DatabaseReference = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid)
     // Hold a handle to the reference
     private var channelRefHandle: DatabaseHandle?
     
@@ -34,7 +37,7 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     // Observes for channels when the view loads.
     override func viewDidLoad() {
         super.viewDidLoad()
-        observeChannels()
+        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search by course code or school"
@@ -48,6 +51,13 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
         }
+        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let data = snapshot.value as! Dictionary<String, AnyObject>
+            self.school = data["school"] as? String
+            self.channelRef = self.channelRef.child(self.school!)
+            self.observeChannels()
+            
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,7 +151,6 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
             let newMemberRef = memberRef.childByAutoId()
             
             let memberDisplayNameRef: DatabaseReference = self.channelRef.child(channel.id).child("names")
-            let newMemberDisplayNameRef = memberDisplayNameRef.childByAutoId()
             
             let channelData = channelsData["\(channel.id)"] as! Dictionary<String, AnyObject>
             
@@ -152,6 +161,7 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
                 } else {
                     print("User id not contained in members")
                     newMemberRef.setValue(user?.uid)
+                    let newMemberDisplayNameRef = memberDisplayNameRef.child(user!.uid)
                     newMemberDisplayNameRef.setValue(user?.displayName)
 
                     // Calling observe channels removes the cell the user just tapped, because the user's id is now in members.
@@ -160,8 +170,9 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
             } else {
                 print("No members yet")
                 newMemberRef.setValue(user?.uid)
+                let newMemberDisplayNameRef = memberDisplayNameRef.child(user!.uid)
                 newMemberDisplayNameRef.setValue(user?.displayName)
-
+                
                 // Calling observe channels removes the cell the user just tapped, because the user's id is now in members.
                 self.observeChannels()
             }
