@@ -19,6 +19,8 @@ final class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    var school: String? 
+    
     var selectedImage: UIImage?
     
     
@@ -105,6 +107,7 @@ final class ChatViewController: JSQMessagesViewController {
         } else {
             let infoVc = segue.destination as! ChannelInfoViewController
             infoVc.channel = channel
+            infoVc.school = school
         }
        
     }

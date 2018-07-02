@@ -14,8 +14,9 @@ class ChannelInfoViewController: UIViewController, MFMailComposeViewControllerDe
     // TODO: Report button
     
     var channel: Channel?
+    var school: String? 
     // Store a reference to the list of channels in the database
-    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels").child(school!)
     
     let user = Auth.auth().currentUser?.uid
     

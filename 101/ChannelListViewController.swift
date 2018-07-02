@@ -107,6 +107,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 }
                 
                 chatVc.channel = channel
+                chatVc.school = channel.school
                 chatVc.channelRef = channelRef.child(channel.id)
                 chatVc.senderDisplayName = senderDisplayName
             }
