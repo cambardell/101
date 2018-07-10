@@ -18,6 +18,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     var school: String?
     var timer = Timer()
     
+    let refresh = UIRefreshControl()
+    
     
     // Store a reference to the list of channels in the database
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
@@ -58,10 +60,37 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     private func observeChannels() {
         // Use the observe method to listen for new channels being written to firebase.
         // observe:with calls the completion block every time a new channel is added to the database.
-        channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
+        print("running")
+        channelRef.observe( .childAdded, with: {  (snapshot) -> Void in
+            print("running")
             let channelData = snapshot.value as! Dictionary<String, AnyObject>
             let id = snapshot.key
             let user = Auth.auth().currentUser
+            
+            if let name = channelData["name"] as! String?, name.count > 0, let school = channelData["school"] as! String? {
+                print(school)
+                // Display the current channel only if the username of the user is contained in the channel's list of members.
+                if let members = channelData["members"] as! Dictionary<String, String>? {
+                    if members.values.contains("\(String(describing: user!.uid))") {
+                        self.channels.append(Channel(id: id, name: name, school: school))
+                        
+                    } else {
+                        
+                    }
+                }
+                print(self.channels)
+                self.tableView.reloadData()
+                self.refresh.endRefreshing()
+                
+            } else {
+                print("Error: could not decode channel data")
+            }
+        })
+        /*channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            let user = Auth.auth().currentUser
+            
             if let name = channelData["name"] as! String?, name.count > 0, let school = channelData["school"] as! String? {
                 
                 // Display the current channel only if the username of the user is contained in the channel's list of members.
@@ -75,12 +104,13 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 }
                 
                 self.tableView.reloadData()
+                self.refresh.endRefreshing()
                 
             } else {
                 print("Error: could not decode channel data")
             }
         })
-
+        */
     }
     
     // MARK: Actions
@@ -89,6 +119,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // MARK: UITableViewDelegate
     // Open a channel when it is tapped
     override func tableView (_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print((indexPath as NSIndexPath).row)
+        print(channels)
         let channel = channels[(indexPath as NSIndexPath).row]
         self.performSegue(withIdentifier: "ShowChannel", sender: channel)
         
@@ -131,6 +163,20 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         title = "101"
         tableView.rowHeight = 88
+        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let data = snapshot.value as! Dictionary<String, AnyObject>
+            self.school = data["school"] as? String
+            self.channelRef = self.channelRef.child(self.school!)
+            self.channels = []
+            self.observeChannels()
+        })
+        tableView.refreshControl = refresh
+        refresh.addTarget(self, action: #selector(refreshChannels(_:)), for: .valueChanged)
+    }
+    
+    @objc func refreshChannels(_ sender: Any) {
+        self.channels = []
+        observeChannels()
         
     }
     
@@ -139,13 +185,6 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
         }
-        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let data = snapshot.value as! Dictionary<String, AnyObject>
-            self.school = data["school"] as? String
-            self.channelRef = self.channelRef.child(self.school!)
-            self.channels = []
-            self.observeChannels()
-        })
         
         // timer = Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(timerUp), userInfo: nil, repeats: false)
     }
