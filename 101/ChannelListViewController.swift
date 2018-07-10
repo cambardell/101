@@ -16,6 +16,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     private var channels: [Channel] = []
 
     var school: String?
+    var timer = Timer()
+    
     
     // Store a reference to the list of channels in the database
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
@@ -66,9 +68,9 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 if let members = channelData["members"] as! Dictionary<String, String>? {
                     if members.values.contains("\(String(describing: user!.uid))") {
                         self.channels.append(Channel(id: id, name: name, school: school))
-                        print("User id contained in members")
+                        
                     } else {
-                        print("User id not contained in members")
+                        
                     }
                 }
                 
@@ -78,6 +80,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 print("Error: could not decode channel data")
             }
         })
+
     }
     
     // MARK: Actions
@@ -129,7 +132,6 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         title = "101"
         tableView.rowHeight = 88
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +147,19 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
             self.observeChannels()
         })
         
-        
+        // timer = Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(timerUp), userInfo: nil, repeats: false)
+    }
+    
+    @objc func timerUp() {
+        if self.channels.isEmpty {
+            let alert = UIAlertController(title: "You have not added any classes.", message: "Tap the plus button on the top left to search for your classes.", preferredStyle: .alert)
+            
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            }))
+            
+            present(alert, animated: true, completion: nil)
+        }
         
     }
     

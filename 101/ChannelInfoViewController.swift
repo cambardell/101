@@ -29,10 +29,8 @@ class ChannelInfoViewController: UIViewController, MFMailComposeViewControllerDe
         reportUser.layer.cornerRadius = 4
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
     }
-    
     
     // When the leave group button is pressed, delete the userid from the channel's members and return user to ChannelListViewController
     @IBAction func leaveGroup(_ sender: Any) {

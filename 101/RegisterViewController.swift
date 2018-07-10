@@ -23,9 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     let defaults = UserDefaults.standard
     
-    let schools = ["University of Waterloo",
-                   "Queen's University",
-                   "Wilfrid Laurier University"]
+    let schools = ["University of Waterloo"]
     
     // MARK: View Lifecycle
     
@@ -136,6 +134,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         return false
     }
     
+    @objc func keyboardNotification(notification: NSNotification) {
+        if schoolPicker.isHidden {
+            
+        }
+    }
     
     
 }
