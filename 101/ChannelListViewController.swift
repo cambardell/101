@@ -84,6 +84,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 
             } else {
                 print("Error: could not decode channel data")
+                self.refresh.endRefreshing()
             }
         })
         /*channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
@@ -185,6 +186,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
         }
+        refreshChannels((Any).self)
+        print("refreshing")
         
         // timer = Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(timerUp), userInfo: nil, repeats: false)
     }
