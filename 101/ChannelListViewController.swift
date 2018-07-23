@@ -20,6 +20,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     
     let refresh = UIRefreshControl()
     
+    var bannerView: GADBannerView!
+    
     
     // Store a reference to the list of channels in the database
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
@@ -87,31 +89,6 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 self.refresh.endRefreshing()
             }
         })
-        /*channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
-            let channelData = snapshot.value as! Dictionary<String, AnyObject>
-            let id = snapshot.key
-            let user = Auth.auth().currentUser
-            
-            if let name = channelData["name"] as! String?, name.count > 0, let school = channelData["school"] as! String? {
-                
-                // Display the current channel only if the username of the user is contained in the channel's list of members.
-                if let members = channelData["members"] as! Dictionary<String, String>? {
-                    if members.values.contains("\(String(describing: user!.uid))") {
-                        self.channels.append(Channel(id: id, name: name, school: school))
-                        
-                    } else {
-                        
-                    }
-                }
-                
-                self.tableView.reloadData()
-                self.refresh.endRefreshing()
-                
-            } else {
-                print("Error: could not decode channel data")
-            }
-        })
-        */
     }
     
     // MARK: Actions
@@ -173,6 +150,16 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         })
         tableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(refreshChannels(_:)), for: .valueChanged)
+        
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        addBannerViewToView(bannerView)
+        let request = GADRequest()
+        
+        bannerView.load(request)
     }
     
     @objc func refreshChannels(_ sender: Any) {
@@ -189,20 +176,10 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         refreshChannels((Any).self)
         print("refreshing")
         
-        // timer = Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(timerUp), userInfo: nil, repeats: false)
-    }
-    
-    @objc func timerUp() {
-        if self.channels.isEmpty {
-            let alert = UIAlertController(title: "You have not added any classes.", message: "Tap the plus button on the top left to search for your classes.", preferredStyle: .alert)
-            
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-            }))
-            
-            present(alert, animated: true, completion: nil)
-        }
+        let request = GADRequest()
         
+        bannerView.load(request)
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -222,6 +199,61 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         
     }
     
+    // MARK: Advertisements
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+    
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+    }
     
 }
 
