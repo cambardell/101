@@ -50,7 +50,7 @@ class AccountViewController: UIViewController {
             newDisplayNameField.placeholder = "Enter new display name"
         }
         
-        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self, weak alert] _ in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] _ in
             
             if let newDisplayNameField = alert?.textFields![0] {
                 print("Action")
@@ -62,6 +62,8 @@ class AccountViewController: UIViewController {
                     print("Error saving display name \(String(describing: error))")
                 }
             }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [] _ in
         }))
         
         present(alert, animated: true, completion: nil)

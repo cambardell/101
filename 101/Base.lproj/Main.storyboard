@@ -37,6 +37,7 @@
                                     <constraint firstAttribute="height" constant="50" id="qzt-Zl-Scp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="0.11533642560243607" green="0.086210556328296661" blue="0.50881838798522949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -51,6 +52,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKU-QC-pfC" userLabel="Email Field">
                                 <rect key="frame" x="66" y="437" width="243" height="50"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
                             </textField>
@@ -64,6 +66,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TBL-fJ-VQN" userLabel="Password Field">
                                 <rect key="frame" x="66" y="503" width="243" height="50"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -164,19 +167,19 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-4z-EFZ">
                                 <rect key="frame" x="66" y="503" width="243" height="50"/>
-                                <color key="tintColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbK-XD-35c" userLabel="Password Field">
                                 <rect key="frame" x="66" y="437" width="243" height="50"/>
-                                <color key="tintColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gr7-Sk-FL6" userLabel="Email Field">
                                 <rect key="frame" x="66" y="371" width="243" height="50"/>
-                                <color key="tintColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
                             </textField>
@@ -328,20 +331,34 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Created by Cameron Bardell." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q9l-h6-wI1">
-                                <rect key="frame" x="68" y="225" width="239" height="128"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="68" y="225" width="239" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="tMN-xt-kxZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Design by Ben Brown, www.debutcreative.com." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ad4-A8-lgl">
+                                <rect key="frame" x="7" y="266" width="361" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LNO-H9-EOa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Q9l-h6-wI1" firstAttribute="leading" secondItem="R3N-ue-iU0" secondAttribute="leadingMargin" constant="52" id="0xP-sM-nKZ"/>
+                            <constraint firstItem="Ad4-A8-lgl" firstAttribute="top" secondItem="Q9l-h6-wI1" secondAttribute="bottom" constant="8" id="2BL-6f-1zN"/>
+                            <constraint firstAttribute="trailing" secondItem="Ad4-A8-lgl" secondAttribute="trailing" constant="7" id="41v-aB-n5X"/>
                             <constraint firstItem="NDP-OW-0P1" firstAttribute="centerX" secondItem="R3N-ue-iU0" secondAttribute="centerX" id="6MF-KC-Obj"/>
-                            <constraint firstItem="Owe-CS-NCc" firstAttribute="top" secondItem="Q9l-h6-wI1" secondAttribute="bottom" constant="314" id="AKD-TD-zBI"/>
                             <constraint firstItem="GNs-ZN-1LQ" firstAttribute="leading" secondItem="wki-WC-tNY" secondAttribute="leading" id="DmQ-Ua-wpp"/>
                             <constraint firstItem="GNs-ZN-1LQ" firstAttribute="top" secondItem="NDP-OW-0P1" secondAttribute="bottom" constant="8" id="Eia-nl-3b8"/>
                             <constraint firstItem="wki-WC-tNY" firstAttribute="centerX" secondItem="R3N-ue-iU0" secondAttribute="centerX" id="NLc-2K-bK2"/>
                             <constraint firstItem="NDP-OW-0P1" firstAttribute="top" secondItem="wki-WC-tNY" secondAttribute="bottom" constant="8" id="TrC-Bk-pSW"/>
+                            <constraint firstItem="Ad4-A8-lgl" firstAttribute="leading" secondItem="R3N-ue-iU0" secondAttribute="leading" constant="7" id="Zw4-as-FR1"/>
                             <constraint firstItem="NDP-OW-0P1" firstAttribute="trailing" secondItem="wki-WC-tNY" secondAttribute="trailing" id="aD7-l5-Jmp"/>
                             <constraint firstItem="Q9l-h6-wI1" firstAttribute="top" secondItem="GNs-ZN-1LQ" secondAttribute="bottom" constant="8" id="eTU-Jh-dCg"/>
                             <constraint firstItem="GNs-ZN-1LQ" firstAttribute="trailing" secondItem="wki-WC-tNY" secondAttribute="trailing" id="jRj-x6-zcH"/>
@@ -574,11 +591,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-s8-5i5">
-                                <rect key="frame" x="113" y="142" width="150" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFZ-Fw-J5m">
+                                <rect key="frame" x="137.5" y="79" width="100" height="40"/>
                                 <color key="backgroundColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="cdh-6F-bmM"/>
+                                    <constraint firstAttribute="width" constant="100" id="DYj-YN-QDe"/>
+                                    <constraint firstAttribute="height" constant="40" id="dCT-lO-kHS"/>
+                                </constraints>
+                                <state key="normal" title="Leave Class">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveGroup:" destination="S5M-WC-JZY" eventType="touchUpInside" id="Od6-0N-hX4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-s8-5i5">
+                                <rect key="frame" x="137.5" y="134" width="100" height="40"/>
+                                <color key="backgroundColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pk7-Z5-NUs"/>
+                                    <constraint firstAttribute="width" constant="100" id="tNo-dS-QGY"/>
                                 </constraints>
                                 <state key="normal" title="Report a user">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -588,26 +620,13 @@
                                     <action selector="reportUser:" destination="S5M-WC-JZY" eventType="touchUpInside" id="OuP-ql-5Ab"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFZ-Fw-J5m">
-                                <rect key="frame" x="113" y="79" width="150" height="43"/>
-                                <color key="backgroundColor" red="0.091009147465229034" green="0.61608630418777466" blue="0.32360160350799561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Leave Class">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="leaveGroup:" destination="S5M-WC-JZY" eventType="touchUpInside" id="Od6-0N-hX4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dXd-IA-fzg" firstAttribute="top" secondItem="X5r-s8-5i5" secondAttribute="bottom" constant="438" id="Baa-Yf-C3M"/>
-                            <constraint firstItem="X5r-s8-5i5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PFZ-Fw-J5m" secondAttribute="trailing" id="Cf3-tr-h2u"/>
-                            <constraint firstItem="PFZ-Fw-J5m" firstAttribute="top" secondItem="KcG-Ju-psE" secondAttribute="bottom" constant="15" id="MgK-gH-kGt"/>
-                            <constraint firstItem="PFZ-Fw-J5m" firstAttribute="centerX" secondItem="kpo-A0-lvO" secondAttribute="centerX" id="OE3-jx-kgc"/>
-                            <constraint firstItem="X5r-s8-5i5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PFZ-Fw-J5m" secondAttribute="leading" id="OFW-zU-m0f"/>
-                            <constraint firstItem="X5r-s8-5i5" firstAttribute="top" secondItem="PFZ-Fw-J5m" secondAttribute="bottom" constant="20" id="Pwe-Yq-8Eh"/>
-                            <constraint firstItem="X5r-s8-5i5" firstAttribute="leading" secondItem="kpo-A0-lvO" secondAttribute="leadingMargin" constant="97" id="V8E-kJ-JTY"/>
+                            <constraint firstItem="PFZ-Fw-J5m" firstAttribute="top" secondItem="KcG-Ju-psE" secondAttribute="bottom" constant="15" id="7C1-QO-ioR"/>
+                            <constraint firstItem="PFZ-Fw-J5m" firstAttribute="centerX" secondItem="kpo-A0-lvO" secondAttribute="centerX" id="QZS-J7-olq"/>
+                            <constraint firstItem="X5r-s8-5i5" firstAttribute="centerX" secondItem="kpo-A0-lvO" secondAttribute="centerX" id="f3l-EW-qY3"/>
+                            <constraint firstItem="X5r-s8-5i5" firstAttribute="top" secondItem="PFZ-Fw-J5m" secondAttribute="bottom" constant="15" id="kke-dR-mmI"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
