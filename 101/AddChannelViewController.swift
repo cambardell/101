@@ -185,10 +185,10 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    // Search for both the course code and the school. 
+    // Search for the course code. 
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredChannels = channels.filter({( channel : Channel) -> Bool in
-            return ("\(channel.name) - \(channel.school)").lowercased().contains(searchText.lowercased())
+            return ("\(channel.name)").lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
     }
