@@ -203,7 +203,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
+        /*view.addSubview(bannerView)
         view.addConstraints(
             [NSLayoutConstraint(item: bannerView,
                                 attribute: .bottom,
@@ -219,12 +219,15 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                                 attribute: .centerX,
                                 multiplier: 1,
                                 constant: 0)
-            ])
+            ])*/
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
     }
     
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("adViewDidReceiveAd")
+        
     }
     
     /// Tells the delegate an ad request failed.

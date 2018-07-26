@@ -139,7 +139,5 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
             
         }
     }
-    
-    
 }
 
