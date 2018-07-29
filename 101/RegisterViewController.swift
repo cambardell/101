@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     let defaults = UserDefaults.standard
     
-    let schools = ["University of Waterloo"]
+    let schools = ["Select your school", "University of Waterloo", "Queen's University", "Wilfrid Laurier University"]
     
     // MARK: View Lifecycle
     
@@ -52,7 +52,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     // When the sign up button is tapped
     @IBAction func loginDidTouch(_ sender: AnyObject) {
         // Check if fields are empty, if not, create a new user and move to ChannelListViewController
-        if nameField?.text != "" && emailField?.text != "" && passwordField?.text != "" {
+        if nameField?.text != "" && emailField?.text != "" && passwordField?.text != "" && self.schoolPicker.selectedRow(inComponent: 0) != 0 {
             
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
                 if let err = error {

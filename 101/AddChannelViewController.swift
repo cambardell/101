@@ -40,7 +40,7 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search by course code or school"
+        searchController.searchBar.placeholder = "Search by course code"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true

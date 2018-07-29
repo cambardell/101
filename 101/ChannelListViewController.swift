@@ -75,6 +75,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                 if let members = channelData["members"] as! Dictionary<String, String>? {
                     if members.values.contains("\(String(describing: user!.uid))") {
                         self.channels.append(Channel(id: id, name: name, school: school))
+                        self.tableView.tableFooterView?.isHidden = true
                         
                     } else {
                         

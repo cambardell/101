@@ -480,6 +480,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="6d1-DZ-12c">
+                            <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for your classes with the plus button." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNM-TO-f4e">
+                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="uNM-TO-f4e" secondAttribute="trailing" constant="8" id="6Yj-Na-6S4"/>
+                                <constraint firstAttribute="bottom" secondItem="uNM-TO-f4e" secondAttribute="bottom" constant="8" id="EJ5-dZ-fcy"/>
+                                <constraint firstItem="uNM-TO-f4e" firstAttribute="top" secondItem="6d1-DZ-12c" secondAttribute="top" constant="8" id="OTv-Nr-ATP"/>
+                                <constraint firstItem="uNM-TO-f4e" firstAttribute="leading" secondItem="6d1-DZ-12c" secondAttribute="leading" constant="8" id="ujv-MA-fj7"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExistingChannel" rowHeight="88" id="m4f-vC-RT4" customClass="ChannelListCell" customModule="_01" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="88"/>
@@ -489,12 +508,12 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e8-O0-ymj">
-                                            <rect key="frame" x="16" y="30" width="45" height="28"/>
+                                            <rect key="frame" x="16" y="30" width="343" height="28"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Title">
                                                     <attributes>
                                                         <font key="NSFont" size="24" name=".SFNSDisplay"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -503,9 +522,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5e8-O0-ymj" firstAttribute="leading" secondItem="mhf-iw-vvI" secondAttribute="leadingMargin" id="Aeg-RP-8Mw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5e8-O0-ymj" secondAttribute="trailing" id="mUH-m0-VtV"/>
                                         <constraint firstItem="5e8-O0-ymj" firstAttribute="centerY" secondItem="mhf-iw-vvI" secondAttribute="centerY" id="qT2-SC-fDh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.091009147469999996" green="0.61608630419999999" blue="0.3236016035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="classTitle" destination="5e8-O0-ymj" id="ZUb-nv-dLa"/>
                                 </connections>
