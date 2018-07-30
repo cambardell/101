@@ -62,9 +62,9 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     private func observeChannels() {
         // Use the observe method to listen for new channels being written to firebase.
         // observe:with calls the completion block every time a new channel is added to the database.
-        print("running")
+        print("observing channels")
         channelRef.observe( .childAdded, with: {  (snapshot) -> Void in
-            print("running")
+           
             let channelData = snapshot.value as! Dictionary<String, AnyObject>
             let id = snapshot.key
             let user = Auth.auth().currentUser
@@ -174,7 +174,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
         }
-        refreshChannels((Any).self)
+        observeChannels()
         print("refreshing")
         
         let request = GADRequest()

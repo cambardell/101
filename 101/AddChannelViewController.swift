@@ -53,7 +53,8 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
         }
         usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as! Dictionary<String, AnyObject>
-            self.school = data["school"] as? String
+            
+            self.school = (data["school"] as! String)
             self.channelRef = self.channelRef.child(self.school!)
             self.observeChannels()
             
@@ -108,15 +109,19 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     private func observeChannels() {
         // Use the observe method to listen for new channels being written to firebase.
         // observe:with calls the completion block every time a new channel is added to the database.
+        print("observing")
         channels = []
         let user = Auth.auth().currentUser
         channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
             let channelData = snapshot.value as! Dictionary<String, AnyObject>
             let id = snapshot.key
-            if let name = channelData["name"] as! String?, name.count > 0, let school = channelData["school"] as! String? {
+            if let name = channelData["name"] as! String?, name.count > 0, var school = channelData["school"] as! String? {
                 // Don't display the channel if the user is already a member.
                 if let member = channelData["members"] as? Dictionary<String, String> {
                     if member.values.contains((user?.uid)!) == false {
+                        if school == "Queens University" {
+                            school = "Queen's University"
+                        }
                         self.channels.append(Channel(id: id, name: name, school: school))
                         self.tableView.reloadData()
                     }

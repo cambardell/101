@@ -72,7 +72,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
                 }
                 
                 // Set the users school based on the picker view
-                let userSchool = ["school": self.schools[self.schoolPicker.selectedRow(inComponent: 0)]]
+                var selectedSchool = self.schools[self.schoolPicker.selectedRow(inComponent: 0)]
+                if selectedSchool == "Queen's University" {
+                    selectedSchool = "Queens University"
+                }
+                let userSchool = ["school": selectedSchool]
                 Database.database().reference().child("users").child(user!.uid).setValue(userSchool)
                 
                 // Save the email and password to device for automatic login
