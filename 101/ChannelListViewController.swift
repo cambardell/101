@@ -70,7 +70,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
             let user = Auth.auth().currentUser
             
             if let name = channelData["name"] as! String?, name.count > 0, let school = channelData["school"] as! String? {
-                print(school)
+            
                 // Display the current channel only if the username of the user is contained in the channel's list of members.
                 if let members = channelData["members"] as! Dictionary<String, String>? {
                     if members.values.contains("\(String(describing: user!.uid))") {
@@ -81,7 +81,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
                         
                     }
                 }
-                print(self.channels)
+                
                 self.tableView.reloadData()
                 self.refresh.endRefreshing()
                 
@@ -98,8 +98,6 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // MARK: UITableViewDelegate
     // Open a channel when it is tapped
     override func tableView (_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print((indexPath as NSIndexPath).row)
-        print(channels)
         let channel = channels[(indexPath as NSIndexPath).row]
         self.performSegue(withIdentifier: "ShowChannel", sender: channel)
         
@@ -174,7 +172,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
         }
-        observeChannels()
+        refreshChannels((Any).self)
         print("refreshing")
         
         let request = GADRequest()
