@@ -60,6 +60,9 @@ final class ChatViewController: JSQMessagesViewController {
                
             }
         }
+        
+        //Remove attachment button
+        self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
