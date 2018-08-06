@@ -37,7 +37,6 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
     // Observes for channels when the view loads.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search by course code"
@@ -111,6 +110,7 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
         // observe:with calls the completion block every time a new channel is added to the database.
         print("observing")
         channels = []
+        searchController.isActive = false
         let user = Auth.auth().currentUser
         channelRefHandle = channelRef.observe(.childAdded, with: {  (snapshot) -> Void in
             let channelData = snapshot.value as! Dictionary<String, AnyObject>
@@ -182,7 +182,6 @@ class AddChannelViewController: UITableViewController, MFMailComposeViewControll
                 self.observeChannels()
             }
         })
-        
     }
     
     // MARK: Search methods

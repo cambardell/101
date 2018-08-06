@@ -4,6 +4,7 @@
 //
 //  Created by Cameron Bardell on 2018-04-30.
 //
+
 import UIKit
 import Firebase
 import JSQMessagesViewController
@@ -62,7 +63,7 @@ final class ChatViewController: JSQMessagesViewController {
         }
         
         //Remove attachment button
-        self.inputToolbar.contentView.leftBarButtonItem = nil
+        //self.inputToolbar.contentView.leftBarButtonItem = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,12 +154,12 @@ final class ChatViewController: JSQMessagesViewController {
   // MARK: UI and User Interaction
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor(red:0.16, green:0.78, blue:0.86, alpha:1.0))
     }
     
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor(red:0.20, green:0.77, blue:0.70, alpha:1.0))
     }
     
     private func addMessage(withId id: String, name: String, text: String) {
@@ -312,6 +313,8 @@ final class ChatViewController: JSQMessagesViewController {
             self.present(picker, animated: true, completion: nil)
         }))
         
+        present(alert, animated: true, completion: nil)
+        
     }
     
     //When chatViewController disappears
@@ -359,12 +362,13 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                 })
             }
         } else {
-            // TODO: Handle picking a photo from the camera
+          
             
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             if let key = sendPhotoMessage() {
-                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                // Compress the photo
+                let imageData = UIImageJPEGRepresentation(image, 0.5)
                 
                 let imagePath = Auth.auth().currentUser!.uid + "/\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
                 

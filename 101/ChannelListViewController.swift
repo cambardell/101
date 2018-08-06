@@ -18,6 +18,8 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     var school: String?
     var timer = Timer()
     
+    let cellSpacingHeight: CGFloat = 15
+    
     let refresh = UIRefreshControl()
     
     var bannerView: GADBannerView!
@@ -36,15 +38,28 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
   
     
     // MARK: UITableViewDataSource
+    // Set the spacing between sections
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // A section for existing classes and for creating new ones, to be removed later. 
-        return 1
+        return channels.count
+        
+    }
+    
+    // Make the background color show through
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     // Set the number of rows for each section. This is always one for the new channel section, and the number of channels for the existing channels section.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return channels.count
+        return 1
     }
     
     
@@ -53,7 +68,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         let reuseIdentifier = "ExistingChannel"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ChannelListCell
          
-        cell.classTitle.text = channels[(indexPath as NSIndexPath).row].name
+        cell.classTitle.text = channels[(indexPath as NSIndexPath).section].name
         
         return cell
     }
@@ -98,7 +113,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // MARK: UITableViewDelegate
     // Open a channel when it is tapped
     override func tableView (_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let channel = channels[(indexPath as NSIndexPath).row]
+        let channel = channels[(indexPath as NSIndexPath).section]
         self.performSegue(withIdentifier: "ShowChannel", sender: channel)
         
     }
@@ -140,6 +155,14 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         title = "101"
         tableView.rowHeight = 88
+        
+        let logo = UIImage(named: "IconBackgroundOrange")
+
+        let imageView = UIImageView(image:logo)
+       
+        
+        self.navigationItem.titleView = imageView
+        
         usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as! Dictionary<String, AnyObject>
             self.school = data["school"] as? String
