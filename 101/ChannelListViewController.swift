@@ -18,7 +18,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     var school: String?
     var timer = Timer()
     
-    let cellSpacingHeight: CGFloat = 15
+    let cellSpacingHeight: CGFloat = 5
     
     let refresh = UIRefreshControl()
     
@@ -175,13 +175,11 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-4804366180565835/9538922174"
         bannerView.rootViewController = self
         bannerView.delegate = self
         addBannerViewToView(bannerView)
-        let request = GADRequest()
-        
-        bannerView.load(request)
+        bannerView.load(GADRequest())
     }
     
     @objc func refreshChannels(_ sender: Any) {
@@ -225,23 +223,6 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        /*view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])*/
         tableView.tableHeaderView?.frame = bannerView.frame
         tableView.tableHeaderView = bannerView
     }
