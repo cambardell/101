@@ -14,7 +14,6 @@
 		1A5826ED2093756100D55AF2 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5826EC2093756100D55AF2 /* AccountViewController.swift */; };
 		1A761BF3209B886B00981EA0 /* ChannelInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A761BF2209B886B00981EA0 /* ChannelInfoViewController.swift */; };
 		1A76958C20B50F3F00B37A0F /* ChannelListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76958B20B50F3F00B37A0F /* ChannelListCell.swift */; };
-		1ADB0A3B20D2F05E00F881A1 /* AddChannelListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB0A3A20D2F05E00F881A1 /* AddChannelListCell.swift */; };
 		1ADCF8D920AE47500032421D /* ShowMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADCF8D820AE47500032421D /* ShowMediaViewController.swift */; };
 		1ADCF8DB20AF2F3E0032421D /* UITest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ADCF8DA20AF2F3E0032421D /* UITest.storyboard */; };
 		459780D31D6465FB007BE66F /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459780D21D6465FB007BE66F /* UIImage+Gif.swift */; };
@@ -27,6 +26,7 @@
 		BB5355811BEF765800321277 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB5355801BEF765800321277 /* Assets.xcassets */; };
 		BB5355841BEF765800321277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5355821BEF765800321277 /* LaunchScreen.storyboard */; };
 		BB53558F1BEF7E9700321277 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB53558E1BEF7E9700321277 /* ChatViewController.swift */; };
+		FCE64CEB211E0FE9008693BD /* AddChannelListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE64CEA211E0FE9008693BD /* AddChannelListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,6 @@
 		1A5826EC2093756100D55AF2 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1A761BF2209B886B00981EA0 /* ChannelInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInfoViewController.swift; sourceTree = "<group>"; };
 		1A76958B20B50F3F00B37A0F /* ChannelListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListCell.swift; sourceTree = "<group>"; };
-		1ADB0A3A20D2F05E00F881A1 /* AddChannelListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddChannelListCell.swift; path = "/Users/CamBardell/Documents/101-master/101/AddChannelListCell.swift"; sourceTree = "<absolute>"; };
 		1ADCF8D820AE47500032421D /* ShowMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMediaViewController.swift; sourceTree = "<group>"; };
 		1ADCF8DA20AF2F3E0032421D /* UITest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UITest.storyboard; sourceTree = "<group>"; };
 		405733D537101C857BFB51AC /* Pods_101.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_101.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +57,7 @@
 		BB53558E1BEF7E9700321277 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E8DDF38A1BEF88DC00B5F45A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E8DDF38C1BEF88E200B5F45A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		FCE64CEA211E0FE9008693BD /* AddChannelListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				45A0D9001D4BB5E900F26729 /* Channel.swift */,
-				1ADB0A3A20D2F05E00F881A1 /* AddChannelListCell.swift */,
 				1A76958B20B50F3F00B37A0F /* ChannelListCell.swift */,
+				FCE64CEA211E0FE9008693BD /* AddChannelListCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -331,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB53557C1BEF765800321277 /* LoginViewController.swift in Sources */,
+				FCE64CEB211E0FE9008693BD /* AddChannelListCell.swift in Sources */,
 				45A0D9011D4BB5E900F26729 /* Channel.swift in Sources */,
 				459780D31D6465FB007BE66F /* UIImage+Gif.swift in Sources */,
 				1A5826EB20924A8C00D55AF2 /* RegisterViewController.swift in Sources */,
@@ -339,7 +340,6 @@
 				1A761BF3209B886B00981EA0 /* ChannelInfoViewController.swift in Sources */,
 				BB53557A1BEF765800321277 /* AppDelegate.swift in Sources */,
 				1A14F6582095266A00B0865D /* LoadingViewController.swift in Sources */,
-				1ADB0A3B20D2F05E00F881A1 /* AddChannelListCell.swift in Sources */,
 				1ADCF8D920AE47500032421D /* ShowMediaViewController.swift in Sources */,
 				1A76958C20B50F3F00B37A0F /* ChannelListCell.swift in Sources */,
 				1A14F65A209751ED00B0865D /* AddChannelViewController.swift in Sources */,
