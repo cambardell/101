@@ -180,6 +180,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         bannerView.delegate = self
         addBannerViewToView(bannerView)
         bannerView.load(GADRequest())
+        // Change
     }
     
     @objc func refreshChannels(_ sender: Any) {
