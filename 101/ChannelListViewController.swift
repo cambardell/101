@@ -175,11 +175,13 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
         
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = "ca-app-pub-4804366180565835/9538922174"
+        bannerView.adUnitID = "ca-app-pub-4804366180565835/3851782543"
         bannerView.rootViewController = self
         bannerView.delegate = self
         addBannerViewToView(bannerView)
-        bannerView.load(GADRequest())
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerView.load(request)
         // Change
     }
     
@@ -223,9 +225,27 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
     // MARK: Advertisements
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
+        // bannerView.translatesAutoresizingMaskIntoConstraints = false
+        // tableView.tableHeaderView?.frame = bannerView.frame
+        // tableView.tableHeaderView = bannerView
         bannerView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableHeaderView?.frame = bannerView.frame
-        tableView.tableHeaderView = bannerView
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
     
     /// Tells the delegate an ad request loaded an ad.
