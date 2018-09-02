@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     let defaults = UserDefaults.standard
     
-    let schools = ["Select your school", "University of Waterloo", "Queens University", "Wilfrid Laurier University", "Trent University", "Carleton University", "McMaster University", "University of British Columbia"]
+    let schools = ["Select your school", "University of British Columbia", "Carleton University", "McMaster University", "Queens University", "Trent University", "University of Waterloo",  "Wilfrid Laurier University"]
     
     // MARK: View Lifecycle
     
