@@ -171,7 +171,7 @@ class ChannelListViewController: UITableViewController, GADBannerViewDelegate {
             self.observeChannels()
         })
         tableView.refreshControl = refresh
-        refresh.addTarget(self, action: #selector(refreshChannels(_:)), for: .valueChanged)
+        // refresh.addTarget(self, action: #selector(refreshChannels(_:)), for: .valueChanged)
         
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
