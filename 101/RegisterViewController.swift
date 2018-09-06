@@ -31,6 +31,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
